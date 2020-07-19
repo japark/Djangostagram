@@ -2,3 +2,4 @@ venv
 db.sqlite3
 secrets.json
 __pycache__
+migrations
