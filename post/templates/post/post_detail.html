@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+{% endblock %}
+
+{% block contents %}
+<div class="row mt-5">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<a href="/"><h5>&lArr;목록으로</h5></a>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+<div class="row mt-4">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 text-center">
+		<img id="contents-img" src="{{ post.img_url }}" alt="{{ post.contents }}">
+	</div>
+	<div class="col-md-2"></div>
+</div>
+<div class="row mt-4 mb-5">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div>
+			<p>{{ post.contents|linebreaksbr|escape }}</p>
+		</div>
+		<div class="mt-5 text-right">
+			<div>Created: {{ post.registered_dttm }}</div>
+			<div>Posted by
+				<img id="person-icon" src="/static/img/person.png" alt="person">
+				{{ post.user }}
+			</div>
+			<div>Tags: {{ post.tags.all|join:", " }}</div>		
+		</div>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+.card-img-top {
+	height: 24rem;
+}
+.card-body-contents {
+	height: 6rem;
+	overflow: hidden;
+}
+
+img#person-icon {
+	width: 20px;
+	height: 20px;
+}
+
+img#contents-img {
+	width: 100%;
+}

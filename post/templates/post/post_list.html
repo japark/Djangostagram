@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Timeline{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+{% endblock %}
+
+{% block contents %}
+<div class="row mt-5">
+	<div class="col-12">
+		<div class="row row-cols-1 row-cols-md-2">
+		{% for post in post_list %}
+			<div class="col mb-5">
+				<a href="{% url 'post' pk=post.pk %}">
+					<div class="card">
+						<img src="{{ post.img_url }}" class="card-img-top" alt="{{ post.contents }}">
+						<div class="card-body card-body-contents">
+							<p class="card-text">{{ post.contents }}</p>
+						</div>
+						<div class="card-body">
+							<div class="card-text">by 
+								<img id="person-icon" src="/static/img/person.png" alt="person">
+								{{ post.user }}
+							</div>
+							<div class="card-text">created: {{ post.registered_dttm }}</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+<div class="row mt-2 mb-5">
+	<div class="col-12">
+		<nav>
+			<ul class="pagination justify-content-center">
+			{% if page_obj.has_previous %}
+				<li class="page-item bg-light">
+					<a class="page-link" href="?page={{ page_obj.previous_page_number }}">이전으로</a>
+				</li>
+			{% else %}
+				<li class="page-item bg-light disabled">
+					<a class="page-link">이전으로</a>
+				</li>
+			{% endif %}
+			<li class="page-item bg-light disabled">
+				<div class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</div>
+			</li>
+			{% if page_obj.has_next %}
+				<li class="page-item bg-light">
+					<a class="page-link" href="?page={{ page_obj.next_page_number }}">다음으로</a>
+				</li>
+			{% else %}
+				<li class="page-item bg-light disabled">
+					<a class="page-link">다음으로</a>
+				</li>
+			{% endif %}
+			</ul>
+		</nav>
+	</div>
+</div>
+{% endblock %}

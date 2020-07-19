@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block contents %}
+<div class="row mt-5">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 panel panel-default">
+		<div class="alert alert-dark">로그인 정보를 입력하세요.</div>
+		<form action="." method="post">{% csrf_token %}
+			{% for error in form.non_field_errors %}
+	        <div style="color:red;">
+	            <strong>{{ error }}</strong>
+	        </div>
+		    {% endfor %}
+			{% for field in form %}
+			<div class="form-group">
+				<label for="{{ field.id_for_label }}"></label>
+				<input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" placeholder="{{ field.label }}" name="{{ field.name }}">
+			</div>
+			{% endfor %}
+			<input class="btn btn-primary mt-4" type="submit" value="로그인">
+		</form>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+{% endblock %}
