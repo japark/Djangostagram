@@ -1,7 +1,9 @@
 # Djangostagram
 Djangostagram imitating the famous social network service, Instagram, using Django engine
 
-NOTE) SECRET_KEY in settings.py was saved in separate file that wasn't uploaded here.
+
+NOTE) SECRET_KEY in settings.py was saved in separate file that wasn't uploaded here.  
+      So, generate your own SECRET_KEY to run the whole code, or just refer to the code in each app.
 
 
 After git clone, follow these:
